@@ -1,0 +1,12 @@
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.AssemblyReference.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfoInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.AssemblyInfo.cs
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CoreCompileInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\bin\Debug\netcoreapp3.1\DAL.deps.json
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\bin\Debug\netcoreapp3.1\DAL.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\bin\Debug\netcoreapp3.1\DAL.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\bin\Debug\netcoreapp3.1\ML.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\bin\Debug\netcoreapp3.1\ML.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.csproj.CopyComplete
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\DAL\obj\Debug\netcoreapp3.1\DAL.pdb

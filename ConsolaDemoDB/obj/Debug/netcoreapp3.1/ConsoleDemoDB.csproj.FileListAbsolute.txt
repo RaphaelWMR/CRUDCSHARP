@@ -1,0 +1,8 @@
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\bin\Debug\netcoreapp3.1\ConsoleDemoDB.deps.json
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\bin\Debug\netcoreapp3.1\ConsoleDemoDB.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\bin\Debug\netcoreapp3.1\ConsoleDemoDB.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\obj\Debug\netcoreapp3.1\ConsoleDemoDB.AssemblyInfoInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\obj\Debug\netcoreapp3.1\ConsoleDemoDB.AssemblyInfo.cs
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\obj\Debug\netcoreapp3.1\ConsoleDemoDB.csproj.CoreCompileInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\obj\Debug\netcoreapp3.1\ConsoleDemoDB.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\ConsolaDemoDB\obj\Debug\netcoreapp3.1\ConsoleDemoDB.pdb

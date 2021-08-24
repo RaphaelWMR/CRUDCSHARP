@@ -1,0 +1,220 @@
+﻿
+@{
+    @using ML;
+    ViewData["Title"] = "Editar Estudiante";
+}
+
+<h1>Editar estudiante</h1>
+@{ 
+    EstudianteDB estudiante = (EstudianteDB) ViewData["EstudianteDB"];
+}
+<div class="py-1">
+    <form action="UpdateEstudiante" class="form" method="post">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Primer apellido</label>
+                            <input type="hidden" name="id" value="@estudiante.estudiante_id">
+                            <input class="form-control" type="text" name="pa" placeholder="" value="@estudiante.estudiante_pa">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Segundo apellido</label>
+                            <input class="form-control" type="text" name="sa" placeholder="" value="@estudiante.estudiante_sa">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input class="form-control" type="text" name="n" placeholder="" value="@estudiante.estudiante_nombres">
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Sexo</label>
+                            <select class="form-select d-block" name="s" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaSexo"] != null)
+                                    {
+                                        List<Sexo> listaSexo = (List<Sexo>)ViewData["ListaSexo"];
+                                        @foreach (Sexo item in listaSexo)
+                                        {
+                                            if (item.sexo_id == estudiante.estudiante_sexo)
+                                            {
+                                                <option selected value="@item.sexo_id">@item.sexo_descripcion</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.sexo_id">@item.sexo_descripcion</option>
+                                            }
+
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Tipo de documento</label>
+                            <select class="form-select d-block" name="td" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaTipodoc"] != null)
+                                    {
+                                        List<Tipodoc> listatipodoc = (List<Tipodoc>)ViewData["ListaTipodoc"];
+                                        @foreach (Tipodoc item in listatipodoc)
+                                        {
+                                            if (item.tipodoc_id == estudiante.estudiante_tipodoc)
+                                            {
+                                                <option selected value="@item.tipodoc_id">@item.tipodoc_descripcion</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.tipodoc_id">@item.tipodoc_descripcion</option>
+                                            }
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Número de documento</label>
+                            <input class="form-control" type="text" name="nd" placeholder="" value="@estudiante.estudiante_ndoc">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Carrera</label>
+                            <select class="form-select d-block wh" name="car" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaCarrera"] != null)
+                                    {
+                                        List<Carrera> listaCarrera = (List<Carrera>)ViewData["ListaCarrera"];
+                                        @foreach (Carrera item in listaCarrera)
+                                        {
+
+                                            if (item.carrera_id == estudiante.estudiante_carrera)
+                                            {
+                                                <option selected value="@item.carrera_id">@item.carrera_nombre</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.carrera_id">@item.carrera_nombre</option>
+                                            }
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Modalidad de ingreso</label>
+                            <select class="form-select d-block col-10" name="mi" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaModing"] != null)
+                                    {
+                                        List<Moding> lisatModing = (List<Moding>)ViewData["ListaModing"];
+                                        @foreach (Moding item in lisatModing)
+                                        {
+                                            if (item.moding_id == estudiante.estudiante_moding)
+                                            {
+                                                <option selected value="@item.moding_id">@item.moding_descripcion</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.moding_id">@item.moding_descripcion</option>
+                                            }
+
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Estado</label>
+                            <select class="form-select d-block" name="es" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaEstado"] != null)
+                                    {
+                                        List<Estado> listaEstado = (List<Estado>)ViewData["ListaEstado"];
+                                        @foreach (Estado item in listaEstado)
+                                        {
+                                            if (item.estado_id == estudiante.estudiante_estado)
+                                            {
+                                                <option selected value="@item.estado_id">@item.estado_descripcion</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.estado_id">@item.estado_descripcion</option>
+                                            }
+
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Discapacidad</label>
+                            <select class="form-select d-block" name="disc" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaDiscapacidad"] != null)
+                                    {
+                                        List<Discapacidad> listaDiscapacidad = (List<Discapacidad>)ViewData["ListaDiscapacidad"];
+                                        @foreach (Discapacidad item in listaDiscapacidad)
+                                        {
+                                            if (item.discapacidad_id == estudiante.estudiante_discapacidad)
+                                            {
+                                                <option selected value="@item.discapacidad_id">@item.discapacidad_descripcion</option>
+
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.discapacidad_id">@item.discapacidad_descripcion</option>
+
+                                            }
+                                        }
+
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <input class="btn btn-primary" type="submit" value="Actualizar">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

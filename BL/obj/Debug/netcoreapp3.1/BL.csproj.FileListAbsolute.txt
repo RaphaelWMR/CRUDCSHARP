@@ -1,0 +1,14 @@
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\BL.deps.json
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\BL.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\BL.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\DAL.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\ML.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\DAL.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\bin\Debug\netcoreapp3.1\ML.pdb
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.csproj.AssemblyReference.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.AssemblyInfoInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.AssemblyInfo.cs
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.csproj.CoreCompileInputs.cache
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.csproj.CopyComplete
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.dll
+D:\Proyectos\Proecto C#\Proyecto\DAL\BL\obj\Debug\netcoreapp3.1\BL.pdb

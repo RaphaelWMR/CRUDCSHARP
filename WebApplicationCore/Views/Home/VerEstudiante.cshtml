@@ -1,0 +1,170 @@
+﻿
+@{
+    @using ML;
+    ViewData["Title"] = "VerEstudiante";
+}
+
+
+<h1>Ver estudiante</h1>
+@{
+    EstudianteDB estudiante = (EstudianteDB)ViewData["EstudianteDB"];
+}
+<div class="py-1">
+    <form action="" class="form" method="post">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Primer apellido</label>
+                            <input type="hidden" name="id" value="@estudiante.estudiante_id">
+                            <input class="form-control" type="text" name="pa" placeholder="" value="@estudiante.estudiante_pa" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Segundo apellido</label>
+                            <input class="form-control" type="text" name="sa" placeholder="" value="@estudiante.estudiante_sa" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input class="form-control" type="text" name="n" placeholder="" value="@estudiante.estudiante_nombres" disabled>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Sexo</label>
+                                @{
+                                    if (ViewData["ListaSexo"] != null)
+                                    {
+                                        List<Sexo> listaSexo = (List<Sexo>)ViewData["ListaSexo"];
+                                        @foreach (Sexo item in listaSexo)
+                                        {
+                                            if (item.sexo_id == estudiante.estudiante_sexo)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.sexo_descripcion" disabled>
+                                            }
+
+                                        }
+                                    }
+                                }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Tipo de documento</label>
+                                @{
+                                    if (ViewData["ListaTipodoc"] != null)
+                                    {
+                                        List<Tipodoc> listatipodoc = (List<Tipodoc>)ViewData["ListaTipodoc"];
+                                        @foreach (Tipodoc item in listatipodoc)
+                                        {
+                                            if (item.tipodoc_id == estudiante.estudiante_tipodoc)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.tipodoc_descripcion" disabled>
+                                            }
+                                        }
+                                    }
+                                }
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Número de documento</label>
+                            <input class="form-control" type="text" name="nd" placeholder="" value="@estudiante.estudiante_ndoc" disabled>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Carrera</label>
+                                @{
+                                    if (ViewData["ListaCarrera"] != null)
+                                    {
+                                        List<Carrera> listaCarrera = (List<Carrera>)ViewData["ListaCarrera"];
+                                        @foreach (Carrera item in listaCarrera)
+                                        {
+
+                                            if (item.carrera_id == estudiante.estudiante_carrera)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.carrera_nombre" disabled>
+                                            }
+                                        }
+
+                                    }
+                                }
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Modalidad de ingreso</label>
+                                @{
+                                    if (ViewData["ListaModing"] != null)
+                                    {
+                                        List<Moding> lisatModing = (List<Moding>)ViewData["ListaModing"];
+                                        @foreach (Moding item in lisatModing)
+                                        {
+                                            if (item.moding_id == estudiante.estudiante_moding)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.moding_descripcion" disabled>
+                                            }
+                                        }
+
+                                    }
+                                }
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Estado</label>
+
+                                @{
+                                    if (ViewData["ListaEstado"] != null)
+                                    {
+                                        List<Estado> listaEstado = (List<Estado>)ViewData["ListaEstado"];
+                                        @foreach (Estado item in listaEstado)
+                                        {
+                                            if (item.estado_id == estudiante.estudiante_estado)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.estado_descripcion" disabled>
+                                            }
+                                        }
+                                    }
+                                }
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Discapacidad</label>
+
+                                @{
+                                    if (ViewData["ListaDiscapacidad"] != null)
+                                    {
+                                        List<Discapacidad> listaDiscapacidad = (List<Discapacidad>)ViewData["ListaDiscapacidad"];
+                                        @foreach (Discapacidad item in listaDiscapacidad)
+                                        {
+                                            if (item.discapacidad_id == estudiante.estudiante_discapacidad)
+                                            {
+                                                <input class="form-control" type="text" placeholder="" value="@item.discapacidad_descripcion" disabled>
+                                            }
+                                        }
+
+                                    }
+                                }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>

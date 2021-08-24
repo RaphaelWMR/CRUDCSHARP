@@ -1,0 +1,68 @@
+﻿
+@using ML;
+@{
+    ViewData["Title"] = "Resultados de búsqueda";
+}
+
+<h1>Resultados de la búsqueda</h1>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+
+    <div class="col">
+        <div class="e-tabs mb-3 px-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Carreras</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row flex-lg-nowrap">
+            <div class="col mb-3">
+                <div class="e-panel card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h6 class="mr-2">
+                                <span>Carreras</span>
+                                <small class="px-1"> registradas</small>
+                            </h6>
+                        </div>
+                        <div class="e-table">
+                            <div class="table-responsive table-lg mt-3">
+                                <table class="table table-bordered table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center align-middle">ID</th>
+                                            <th class="text-center align-middle">Nombre</th>
+                                            <th class="text-center align-middle">Área</th>
+                                            <th class="text-center align-middle">Facultad</th>
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        if (ViewData["ListaCarrera"] != null)
+                                        {/*Si hay algo en las vistas*/
+                                            List<Carrera> lista = (List<Carrera>)ViewData["ListaCarrera"];
+                                            <tbody>
+                                                @foreach (Carrera item in lista)
+                                                {
+                                                    <tr>
+                                                        <th scope="row" class="align-middle">@item.carrera_id</th>
+                                                        <td class="align-middle">@item.carrera_nombre</td>
+                                                        <td class="align-middle">@item.carrera_area</td>
+                                                        <td class="align-middle">@item.carrera_facultad</td>
+
+                                                    </tr>
+                                                }
+                                            </tbody>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>

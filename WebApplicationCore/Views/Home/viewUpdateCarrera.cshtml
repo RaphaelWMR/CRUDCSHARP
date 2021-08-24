@@ -1,0 +1,89 @@
+﻿@using ML;
+@{
+    ViewData["Title"] = "viewUpdateCarrera";
+}
+<h1>Editar carrera</h1>
+@{
+    CarreraDB carrera = (CarreraDB)ViewData["CarreraDB"];
+}
+<div class="py-1">
+    <form action="UpdateCarrera" class="form" method="post">
+        <div class="row">
+            <div class="col">
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label>Nombre de la carrera</label>
+                            <input type="hidden" name="id" value="@carrera.carrera_id">
+                            <input class="form-control" type="text" name="cn" placeholder="" value="@carrera.carrera_nombre">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Facultad</label>
+                            <select class="form-select d-block" name="f" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaFacultad"] != null)
+                                    {
+                                        List<Facultad> listaFacultad = (List<Facultad>)ViewData["ListaFacultad"];
+                                        @foreach (Facultad item in listaFacultad)
+                                        {
+                                            if (item.facultad_id == carrera.carrera_facultad)
+                                            {
+                                                <option selected value="@item.facultad_id">@item.facultad_nombre</option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.facultad_id">@item.facultad_nombre</option>
+                                            }
+
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <div class="form-group">
+                            <label class="d-block">Área</label>
+                            <select class="form-select d-block" name="ar" aria-label="Default select example">
+                                <option selected>Seleccionar</option>
+                                @{
+                                    if (ViewData["ListaAreas"] != null)
+                                    {
+                                        List<Area> listaAreas = (List<Area>)ViewData["ListaAreas"];
+                                        @foreach (Area item in listaAreas)
+                                        {
+                                            if (item.area_id == carrera.carrera_area)
+                                            {
+                                                <option selected value="@item.area_id">@item.area_letra<p>: </p>@item.area_descripcion </option>
+                                            }
+                                            else
+                                            {
+                                                <option value="@item.area_id">@item.area_letra<p>: </p>@item.area_descripcion</option>
+                                            }
+                                        }
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="row">
+                <div class="col d-flex justify-content-end">
+                    <input class="btn btn-primary" type="submit" value="Actualizar">
+                </div>
+            </div>
+        </div>
+    </form>
+
+</div>
+

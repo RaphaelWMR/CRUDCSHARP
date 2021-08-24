@@ -1,0 +1,319 @@
+﻿@using ML;
+@using Microsoft.AspNetCore.Http;
+@using System.Web;
+@{
+    ViewData["Title"] = "Estudiantes";
+}
+@{
+
+}
+
+<div class="text-center">
+    <h1 class="display-4">Sistema de Matrícula de estudiantes</h1>
+</div>
+
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+
+    <div class="col">
+        <div class="e-tabs mb-3 px-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Estudiantes</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row flex-lg-nowrap">
+            <div class="col mb-3">
+                <div class="e-panel card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h6 class="mr-2">
+                                <span>Estudiantes</span>
+                                <small class="px-1"> matriculados</small>
+                            </h6>
+                        </div>
+                        <div class="e-table">
+                            <div class="table-responsive table-lg mt-3">
+                                <table class="table table-bordered table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center align-middle">ID</th>
+                                            <th class="text-center align-middle">Primer apellido</th>
+                                            <th class="text-center align-middle">Segundo apellido</th>
+                                            <th class="text-center align-middle">Nombres</th>
+                                            <th class="text-center align-middle">Sexo</th>
+                                            <th class="text-center align-middle">N° Doc</th>
+                                            <th class="text-center align-middle">Carrera</th>
+                                            <th class="text-center align-middle" colspan="3">Acciones</th>
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        if (ViewData["ListaEstudiantes"] != null)
+                                        {/*Si hay algo en las vistas*/
+                                            List<Estudiante> lista = (List<Estudiante>)ViewData["ListaEstudiantes"];
+                                        <tbody>
+                                            @foreach (Estudiante item in lista)
+                                            {
+                                            <tr>
+                                                <th scope="row" class="align-middle">@item.estudiante_id</th>
+                                                <td class="align-middle">@item.estudiante_pa</td>
+                                                <td class="align-middle">@item.estudiante_sa</td>
+                                                <td class="align-middle">@item.estudiante_nombres</td>
+                                                <td class="align-middle">@item.estudiante_sexo</td>
+                                                <td class="align-middle">@item.estudiante_ndoc</td>
+                                                <td class="align-middle">@item.estudiante_carrera</td>
+                                                <td class="align-middle">
+                                                    <form class="align-middle" action="Home/verEstudiante" method="post">
+                                                        <input type="hidden" name="id_ver" value="@item.estudiante_id">
+                                                        <input class="btn btn-success text-center align-middle" type="submit" value="Ver">
+                                                    </form>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <form class="align-middle" action="Home/viewUpdateEstudiante" method="post">
+                                                        <input type="hidden" name="id_update" value="@item.estudiante_id">
+                                                        <input class="btn btn-warning text-center align-middle" type="submit" value="Editar">
+                                                    </form>
+                                                </td>
+                                                <td class="align-middle">
+                                                    <form class="align-middle" action="Home/DeleteEstudiante" method="post">
+                                                        <input type="hidden" name="id_delete" value="@item.estudiante_id">
+                                                        <input class="btn btn-danger text-center align-middle" type="submit" value="Eliminar">
+                                                    </form>
+                                                </td>
+
+                                            </tr>
+                                            }
+
+                                        </tbody>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 mb-3">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="text-center px-xl-3">
+                            <button class="btn btn-success btn-block" type="button" data-toggle="modal" data-target="#user-form-modal">Nuevo<br>estudiante</button>
+                        </div>
+                        <hr class="my-3">
+                        <div class="e-navlist e-navlist--active-bold d-block">
+                                <div class="card text-white bg-primary" style="max-width: 18rem;">
+                                    <div class="card-header text-center">Cantidad de estudiantes</div>
+                                    <div class="card-body text-center align-middle">
+                                        @{ 
+                                            int cantidad = (int)ViewData["CantidadEstudiantes"];
+                                        }
+                                        <h5 class="card-title">@cantidad</h5>
+                                    </div>
+                                </div>
+
+                        </div>
+                        <hr class="my-3">
+                        <div>
+                            @{
+                                string banderaBusqueda = (string)ViewData["Buscar"];
+                                if (banderaBusqueda != "true")
+                                {
+                                    <form action="Home/SearchEstudiante" method="post">
+                                        <div>
+                                            <div class="col d-block justify-content-end">
+                                                <input class="form-control w-100" type="text" placeholder="Buscar" name="busqueda" value="">
+                                                <input class="btn btn-primary align-middle m-1" placeholder="Buscar" type="submit" value="Buscar">
+                                            </div>
+                                        </div>
+                                    </form>
+                                }
+                             }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- User Form Modal -->
+        <div class="modal fade" role="dialog" tabindex="-1" id="user-form-modal">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Registrar estudiante</h5>
+                        <button type="button" class="close" data-dismiss="modal">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="py-1">
+                            <form action="Home/InsertEstudiante" class="form" method="post">
+                                <div class="row">
+                                    <div class="col">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Primer apellido</label>
+                                                    <input class="form-control" type="text" name="pa" placeholder="" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Segundo apellido</label>
+                                                    <input class="form-control" type="text" name="sa" placeholder="" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Nombres</label>
+                                                    <input class="form-control" type="text" name="n" placeholder="" value="">
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Sexo</label>
+                                                    <select class="form-select d-block" name="s" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaSexo"] != null)
+                                                            {
+                                                                List<Sexo> listaSexo = (List<Sexo>)ViewData["ListaSexo"];
+                                                            @foreach (Sexo item in listaSexo)
+                                                                {
+                                                            <option value="@item.sexo_id">@item.sexo_descripcion</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Tipo de documento</label>
+                                                    <select class="form-select d-block" name="td" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaTipodoc"] != null)
+                                                            {
+                                                                List<Tipodoc> listatipodoc = (List<Tipodoc>)ViewData["ListaTipodoc"];
+                                                            @foreach (Tipodoc item in listatipodoc)
+                                                                {
+                                                            <option value="@item.tipodoc_id">@item.tipodoc_descripcion</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label>Número de documento</label>
+                                                    <input class="form-control" type="text" name="nd" placeholder="" value="">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Carrera</label>
+                                                    <select class="form-select d-block wh" name="car" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaCarrera"] != null)
+                                                            {
+                                                                List<Carrera> listaCarrera = (List<Carrera>)ViewData["ListaCarrera"];
+                                                            @foreach (Carrera item in listaCarrera)
+                                                                {
+                                                            <option value="@item.carrera_id">@item.carrera_nombre</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Modalidad de ingreso</label>
+                                                    <select class="form-select d-block col-10" name="mi" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaModing"] != null)
+                                                            {
+                                                                List<Moding> lisatModing = (List<Moding>)ViewData["ListaModing"];
+                                                            @foreach (Moding item in lisatModing)
+                                                                {
+                                                            <option value="@item.moding_id">@item.moding_descripcion</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Estado</label>
+                                                    <select class="form-select d-block" name="es" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaEstado"] != null)
+                                                            {
+                                                                List<Estado> listaEstado = (List<Estado>)ViewData["ListaEstado"];
+                                                            @foreach (Estado item in listaEstado)
+                                                                {
+                                                            <option value="@item.estado_id">@item.estado_descripcion</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                            <div class="col">
+                                                <div class="form-group">
+                                                    <label class="d-block">Discapacidad</label>
+                                                    <select class="form-select d-block" name="disc" aria-label="Default select example">
+                                                        <option selected>Seleccionar</option>
+                                                        @{
+                                                            if (ViewData["ListaDiscapacidad"] != null)
+                                                            {
+                                                                List<Discapacidad> listaDiscapacidad = (List<Discapacidad>)ViewData["ListaDiscapacidad"];
+                                                            @foreach (Discapacidad item in listaDiscapacidad)
+                                                                {
+                                                            <option value="@item.discapacidad_id">@item.discapacidad_descripcion</option>
+                                                                }
+
+                                                            }
+                                                        }
+                                                    </select>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="row">
+                                        <div class="col d-flex justify-content-end">
+                                            <input class="btn btn-primary" type="submit" value="Guardar">
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

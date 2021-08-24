@@ -1,0 +1,74 @@
+﻿
+@using ML; 
+@{
+    ViewData["Title"] = "Resultados de búsqueda";
+}
+
+<h1>Resultados de la búsqueda</h1>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+
+    <div class="col">
+        <div class="e-tabs mb-3 px-3">
+            <ul class="nav nav-tabs">
+                <li class="nav-item">
+                    <a class="nav-link active" href="#">Estudiantes</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="row flex-lg-nowrap">
+            <div class="col mb-3">
+                <div class="e-panel card">
+                    <div class="card-body">
+                        <div class="card-title">
+                            <h6 class="mr-2">
+                                <span>Estudiantes</span>
+                                <small class="px-1"> matriculados</small>
+                            </h6>
+                        </div>
+                        <div class="e-table">
+                            <div class="table-responsive table-lg mt-3">
+                                <table class="table table-bordered table-fixed">
+                                    <thead>
+                                        <tr>
+                                            <th class="text-center align-middle">ID</th>
+                                            <th class="text-center align-middle">Primer apellido</th>
+                                            <th class="text-center align-middle">Segundo apellido</th>
+                                            <th class="text-center align-middle">Nombres</th>
+                                            <th class="text-center align-middle">Sexo</th>
+                                            <th class="text-center align-middle">N° Doc</th>
+                                            <th class="text-center align-middle">Carrera</th>
+                                        </tr>
+                                    </thead>
+                                    @{
+                                        if (ViewData["ListaEstudiantes"] != null)
+                                        {/*Si hay algo en las vistas*/
+                                            List<Estudiante> lista = (List<Estudiante>)ViewData["ListaEstudiantes"];
+                                            <tbody>
+                                                @foreach (Estudiante item in lista)
+                                                {
+                                                    <tr>
+                                                        <th scope="row" class="align-middle">@item.estudiante_id</th>
+                                                        <td class="align-middle">@item.estudiante_pa</td>
+                                                        <td class="align-middle">@item.estudiante_sa</td>
+                                                        <td class="align-middle">@item.estudiante_nombres</td>
+                                                        <td class="align-middle">@item.estudiante_sexo</td>
+                                                        <td class="align-middle">@item.estudiante_ndoc</td>
+                                                        <td class="align-middle">@item.estudiante_carrera</td>
+
+                                                    </tr>
+                                                }
+
+                                            </tbody>
+                                        }
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
